@@ -85,6 +85,7 @@ public class Milestone {
             }
             while (!shuttingDown) {
                 long scanTime = System.currentTimeMillis();
+                log.debug("looping");
 
                 try {
                     final int previousLatestMilestoneIndex = latestMilestoneIndex;
@@ -137,16 +138,18 @@ public class Milestone {
             try {
                 ledgerValidator.init();
                 ledgerValidatorInitialized.set(true);
+                log.debug("ledgerValidator initioalized");
             } catch (Exception e) {
                 log.error("Error initializing snapshots. Skipping.", e);
             }
             while (!shuttingDown) {
                 long scanTime = System.currentTimeMillis();
-
+                log.debug("looping");
                 try {
                     final int previousSolidSubtangleLatestMilestoneIndex = latestSolidSubtangleMilestoneIndex;
 
                     if(latestSolidSubtangleMilestoneIndex < latestMilestoneIndex) {
+                    	log.debug("need to update solid milestone {} -> {}",latestSolidSubtangleMilestoneIndex, latestMilestoneIndex);
                         updateLatestSolidSubtangleMilestone();
                     }
 

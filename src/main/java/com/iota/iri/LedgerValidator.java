@@ -220,6 +220,7 @@ public class LedgerValidator {
      * @throws Exception
      */
     private MilestoneViewModel buildSnapshot(Snapshot latestSnapshot) throws Exception {
+    	log("buildSnapshot {}",latestSnapshot.index());
         MilestoneViewModel consistentMilestone = null;
         synchronized (latestSnapshot.snapshotSyncObject) {
             Snapshot updatedSnapshot = latestSnapshot.patch(new HashMap<>(), 0);

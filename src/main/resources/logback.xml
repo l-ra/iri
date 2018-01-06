@@ -3,10 +3,8 @@
 
 	<!-- Appenders -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-	   <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>INFO</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
+	   <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
         </filter>
         
 	   <target>System.out</target>
